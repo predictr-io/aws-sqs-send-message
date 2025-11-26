@@ -1,0 +1,56 @@
+name: 'AWS SQS Send Message'
+description: 'Send messages to AWS SQS queues with support for message attributes, delay, and deduplication'
+author: 'predictr-io'
+
+branding:
+  icon: 'send'
+  color: 'orange'
+
+inputs:
+  # Required parameters
+  queue-url:
+    description: 'SQS queue URL (e.g., https://sqs.us-east-1.amazonaws.com/123456789012/my-queue)'
+    required: true
+
+  message-body:
+    description: 'Message body content (string, max 256 KB)'
+    required: true
+
+  # Optional SQS parameters
+  message-attributes:
+    description: 'Message attributes as JSON object (e.g., {"Type": {"DataType": "String", "StringValue": "order"}})'
+    required: false
+
+  delay-seconds:
+    description: 'Delay before message becomes available for processing (0-900 seconds, default: 0)'
+    required: false
+    default: '0'
+
+  message-group-id:
+    description: 'Message group ID for FIFO queues (required for FIFO queues)'
+    required: false
+
+  message-deduplication-id:
+    description: 'Message deduplication ID for FIFO queues (optional, auto-generated if not provided for FIFO queues with content-based deduplication disabled)'
+    required: false
+
+  system-attributes:
+    description: 'System message attributes as JSON object (e.g., {"AWSTraceHeader": {"DataType": "String", "StringValue": "trace-id"}})'
+    required: false
+
+outputs:
+  message-id:
+    description: 'Unique identifier assigned to the message by SQS'
+
+  sequence-number:
+    description: 'Sequence number for FIFO queues (only for FIFO queues)'
+
+  md5-of-body:
+    description: 'MD5 hash of the message body'
+
+  md5-of-attributes:
+    description: 'MD5 hash of the message attributes'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
