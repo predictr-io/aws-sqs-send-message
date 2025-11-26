@@ -29,7 +29,7 @@ Use `aws-actions/configure-aws-credentials@v4` for real AWS environments:
 
 ### Option 2: LocalStack (Testing)
 
-Use LocalStack as a service container for local testing:
+Use LocalStack as a service container for testing within the workflow:
 
 ```yaml
 jobs:

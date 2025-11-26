@@ -1,7 +1,7 @@
 {
     "name": "aws-sqs-send-message",
-    "version": "1.0.0",
-    "description": "GitHub Action to manage AWS Glue catalog partitions",
+    "version": "0.1.0",
+    "description": "GitHub Action to send messages to AWS SQS queues",
     "main": "dist/index.js",
     "scripts": {
         "build": "ncc build src/index.ts -o dist --source-map --license licenses.txt",
@@ -13,7 +13,9 @@
     "keywords": [
         "github-action",
         "aws",
-        "sqs"
+        "sqs",
+        "queue",
+        "send-message"
     ],
     "author": "predictr-io",
     "license": "MIT",
